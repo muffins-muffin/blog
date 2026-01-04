@@ -20,7 +20,6 @@ description: > # this means to ignore newlines until "baseurl:"
   Melvin Ch'ng.
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://muffins-muffin.github.io"
-
 # Company Information
 company_name: Johns, Smith & Associates
 address_line: Via Ludovisi 39-45, Rome, 54267, Italy
