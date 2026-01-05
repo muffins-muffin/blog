@@ -123,7 +123,7 @@ float: right;
     padding:10px;
 }
 .current span{
-    color:#55CBD2;
+    color:#c41e3a;
 
 }
 
@@ -148,7 +148,7 @@ float: right;
 body {
     font-size: 15px;
     line-height: 24px;
-    background:#F8FAFF;
+    background:#f5f5f5;
 }
 
 a {
@@ -194,7 +194,7 @@ address {
 .nav-pills > li.selected > a:hover,
 .nav-pills > li.selected > a:focus {
   color: #ffffff;
-  background-color: #1bbd9b;
+  background-color: #c41e3a;
 }
 /*
 * ==========================================================================
@@ -218,7 +218,7 @@ address {
 .nav-pills-centered > .nav-pills > li > a.selected,
 .nav-pills-centered > .nav-pills > li > span.selected {
   color: #ffffff;
-  background-color: #1bbd9b;
+  background-color: #c41e3a;
 }
 /*
 * ==========================================================================
@@ -341,7 +341,7 @@ address {
     text-align: left;
     letter-spacing:.7px;
     font-size: 13px;
-    color: #71d7c2;
+    color: #c41e3a;
 }
 
 .spacing{
@@ -351,7 +351,7 @@ address {
 .sidebar-right{
     font-size: 13px;
     font-weight: bold;
-    color:#84d7bd;
+    color:#c41e3a;
 }
 
 .featured-img{
@@ -505,12 +505,12 @@ footer{
    margin-top:40px;
    left: 0;
    right: 0;
-   background: black;
+   background: #1a1a1a;
    bottom: 0px;
 }
 
 footer h3 {
-    color: #dadada;
+    color: #e0e0e0;
     margin-bottom: 20px;
 }
 
@@ -578,7 +578,7 @@ footer h3 {
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
-        color:#D9230F;
+        color:#c41e3a;
     }
  
     .search-query:focus + button {
@@ -611,7 +611,7 @@ footer h3 {
 }
 
 .lib-panel .lib-row.lib-header {
-    background-color: #FCFFCF;
+    background-color: #e8e8e8;
     font-size: 25px;
     padding: 15px 20px 0 20px;
 }
