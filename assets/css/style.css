@@ -20,7 +20,7 @@ License URI:http://www.gnu.org/licenses/gpl-2.0.html
   margin-left: 20px;
 }
 .blog-title{
-  color: #385A30;
+  color: #1a1a1a;
   font-family: "Lato";
   font-variant: small-caps;
 }
@@ -110,7 +110,7 @@ h3.col-xs-12{
     text-align: center;
 }
 .block-author{
-    color: #D7002E;
+    color: #c41e3a;
 }
 
 .btn-info{
@@ -152,7 +152,7 @@ body {
 }
 
 a {
-    color: #55CBD2;
+    color: #c41e3a;
     text-decoration: none;
     -o-transition: all .3s;
     -moz-transition: all .3s;
@@ -160,7 +160,7 @@ a {
     -ms-transition: all .3s;
 }
 
-a:hover { color: #888; text-decoration: none; }
+a:hover { color: #8b0000; text-decoration: none; }
 
 strong { font-weight: bold; }
 
@@ -226,7 +226,7 @@ address {
 * ==========================================================================
 */
 .active{
-  background:#74B9B9 !important;
+  background:#2c2c2c !important;
   color: white;
 }
 .navbar {
@@ -259,7 +259,7 @@ address {
   padding-top: 0px;
 }
 .side-left{
-  background:#528C7C;
+  background:#2c2c2c;
   box-shadow: 3px grey;
   color: white;
   padding: 30px;
@@ -407,7 +407,7 @@ p.blog-text{
   }
 }
 .feedback-section .address-section .address-icon {
-  color: #1bbd9b;
+  color: #c41e3a;
   font-size: 48px;
   line-height: 48px;
   margin-bottom: 30px;
@@ -440,7 +440,7 @@ p.blog-text{
   margin-top: 50px;
 }
 .services-section .services-icon {
-  color: #1bbd9b;
+  color: #c41e3a;
   margin-bottom: 30px;
 }
 .services-section .services-title {
@@ -464,13 +464,13 @@ p.blog-text{
 .services-icon .fa:hover{
     padding: 0 10px 0 10px;
     color: white;
-    background: #1BBD9B;
+    background: #c41e3a;
     border-radius: 3px; 
     transition:.4s;  
 }
 .services-group{
   padding: 10px;
-  background:#061F20;
+  background:#1a1a1a;
   color: white;
 }
 .service-icon{
@@ -525,7 +525,7 @@ footer h3 {
 }
 
 #social-icons .btn-group {
-    color: #55CBD2;
+    color: #c41e3a;
     margin-right: 15px;
 }
 #social-icons .btn-group:hover {
