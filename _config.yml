@@ -13,19 +13,19 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Business Jekyll Theme
-email: your-email@example.com
+title: 프리미엄 오토 모터스
+email: info@premiumauto.com
 description: > # this means to ignore newlines until "baseurl:"
-  Yet another Jekyll theme. It is designed for business purpose and ported by 
-  Melvin Ch'ng.
+  프리미엄 오토 모터스는 최고의 차량을 제공하는 전문 딜러십입니다.
+  신차 및 중고차 판매, 정비 서비스를 제공합니다.
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://muffins-muffin.github.io"
 # Company Information
-company_name: Johns, Smith & Associates
-address_line: Via Ludovisi 39-45, Rome, 54267, Italy
-telephone_number: 1.800.245.356
-fax_number: 1.800.245.357
-company_email: hello@LawOffice.org
+company_name: 프리미엄 오토 모터스
+address_line: 서울특별시 강남구 테헤란로 123
+telephone_number: 02-1234-5678
+fax_number: 02-1234-5679
+company_email: info@premiumauto.com
 google_map: https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3618.727010735933!2d91.837871!3d24.907291700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1404919738144
 
 # Social Link
