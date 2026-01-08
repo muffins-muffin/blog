@@ -1,0 +1,52 @@
+<!-- Pagination -->
+{%- if paginate.pages > 1 -%}
+  <nav class="pagination">
+    <ul class="pagination-list">
+      {%- if paginate.previous -%}
+        <li>
+          <a href="{{ paginate.previous.url }}" class="pagination-link">
+            <i class="fa fa-chevron-left"></i> 이전
+          </a>
+        </li>
+      {%- else -%}
+        <li class="disabled">
+          <span class="pagination-link">
+            <i class="fa fa-chevron-left"></i> 이전
+          </span>
+        </li>
+      {%- endif -%}
+      
+      {%- for part in paginate.parts -%}
+        {%- if part.is_link -%}
+          <li>
+            <a href="{{ part.url }}" class="pagination-link">{{ part.title }}</a>
+          </li>
+        {%- else -%}
+          {%- if part.title == paginate.current_page -%}
+            <li class="active">
+              <span class="pagination-link">{{ part.title }}</span>
+            </li>
+          {%- else -%}
+            <li>
+              <span class="pagination-ellipsis">{{ part.title }}</span>
+            </li>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+      
+      {%- if paginate.next -%}
+        <li>
+          <a href="{{ paginate.next.url }}" class="pagination-link">
+            다음 <i class="fa fa-chevron-right"></i>
+          </a>
+        </li>
+      {%- else -%}
+        <li class="disabled">
+          <span class="pagination-link">
+            다음 <i class="fa fa-chevron-right"></i>
+          </span>
+        </li>
+      {%- endif -%}
+    </ul>
+  </nav>
+{%- endif -%}

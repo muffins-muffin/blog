@@ -1,0 +1,17 @@
+{
+  "name": "premium-auto-motors-shopify",
+  "version": "1.0.0",
+  "description": "프리미엄 오토 모터스 Shopify 테마",
+  "main": "layout/theme.liquid",
+  "scripts": {
+    "zip": "shopify theme package"
+  },
+  "keywords": [
+    "shopify",
+    "theme",
+    "automotive",
+    "korean"
+  ],
+  "author": "Premium Auto Motors",
+  "license": "MIT"
+}

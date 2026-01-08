@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "hero-slider": {
+      "type": "hero-slider"
+    },
+    "featured-products": {
+      "type": "featured-products"
+    }
+  },
+  "order": [
+    "hero-slider",
+    "featured-products"
+  ]
+}

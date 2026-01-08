@@ -1,0 +1,110 @@
+<!-- HERO/SLIDER SECTION -->
+<section id="hero-section" class="hero-section">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'slide' -%}
+        <div class="hero-slide {{ block.settings.text_alignment }}">
+          {%- if block.settings.image != blank -%}
+            <div class="hero-image" style="background-image: url('{{ block.settings.image | img_url: '1920x' }}');">
+          {%- else -%}
+            <div class="hero-image" style="background-color: {{ block.settings.bg_color }};">
+          {%- endif -%}
+            <div class="container">
+              <div class="hero-content">
+                {%- if block.settings.heading != blank -%}
+                  <h1>{{ block.settings.heading }}</h1>
+                {%- endif -%}
+                {%- if block.settings.subheading != blank -%}
+                  <p class="lead">{{ block.settings.subheading }}</p>
+                {%- endif -%}
+                {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                  <a href="{{ block.settings.button_link }}" class="btn btn-primary btn-lg">
+                    {{ block.settings.button_label }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "히어로/슬라이더",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "슬라이드",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "배경 이미지"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "배경 색상 (이미지가 없을 경우)",
+          "default": "#000000"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "제목",
+          "default": "프리미엄 오토 모터스"
+        },
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "부제목",
+          "default": "최고의 차량을 만나보세요"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "버튼 텍스트",
+          "default": "상품 보기"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "버튼 링크"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "텍스트 정렬",
+          "options": [
+            {
+              "value": "left",
+              "label": "왼쪽"
+            },
+            {
+              "value": "center",
+              "label": "가운데"
+            },
+            {
+              "value": "right",
+              "label": "오른쪽"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "히어로/슬라이더",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

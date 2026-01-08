@@ -1,0 +1,103 @@
+<!-- FEATURED PRODUCTS SECTION -->
+<section class="featured-products">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>{{ section.settings.heading }}</h2>
+          {%- if section.settings.subheading != blank -%}
+            <p class="lead">{{ section.settings.subheading }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+    
+    <div class="row">
+      {%- assign collection = collections[section.settings.collection] -%}
+      {%- for product in collection.products limit: section.settings.products_to_show -%}
+        <div class="col-md-{{ 12 | divided_by: section.settings.products_per_row }}">
+          <div class="product-card">
+            <a href="{{ product.url }}">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title | escape }}">
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </a>
+            <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+            <p class="product-price">
+              {%- if product.compare_at_price > product.price -%}
+                <span class="compare-price">{{ product.compare_at_price | money }}</span>
+              {%- endif -%}
+              <span class="price">{{ product.price | money }}</span>
+            </p>
+            <a href="{{ product.url }}" class="btn btn-primary">자세히 보기</a>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+    
+    {%- if section.settings.show_view_all -%}
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <a href="/collections/{{ section.settings.collection }}" class="btn btn-lg btn-default">
+            전체 상품 보기
+          </a>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "추천 상품",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "제목",
+      "default": "추천 상품"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "부제목"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "컬렉션"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "label": "표시할 상품 수",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "products_per_row",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "한 줄에 표시할 상품 수",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "전체 보기 버튼 표시",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "추천 상품"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,115 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "프리미엄 오토 모터스",
+    "theme_version": "1.0.0",
+    "theme_author": "Premium Auto Motors",
+    "theme_documentation_url": "https://premiumauto.com",
+    "theme_support_url": "https://premiumauto.com/support"
+  },
+  {
+    "name": "회사 정보",
+    "settings": [
+      {
+        "type": "header",
+        "content": "회사 기본 정보"
+      },
+      {
+        "type": "text",
+        "id": "company_name",
+        "label": "회사명",
+        "default": "프리미엄 오토 모터스"
+      },
+      {
+        "type": "text",
+        "id": "address_line",
+        "label": "주소",
+        "default": "서울특별시 강남구 테헤란로 123"
+      },
+      {
+        "type": "text",
+        "id": "telephone_number",
+        "label": "전화번호",
+        "default": "02-1234-5678"
+      },
+      {
+        "type": "text",
+        "id": "fax_number",
+        "label": "팩스번호",
+        "default": "02-1234-5679"
+      },
+      {
+        "type": "text",
+        "id": "company_email",
+        "label": "이메일",
+        "default": "info@premiumauto.com"
+      },
+      {
+        "type": "textarea",
+        "id": "google_map_embed",
+        "label": "구글 지도 임베드 URL",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "name": "색상",
+    "settings": [
+      {
+        "type": "header",
+        "content": "사이트 색상"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "주요 색상",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "보조 색상",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "강조 색상",
+        "default": "#ff0000"
+      }
+    ]
+  },
+  {
+    "name": "소셜 미디어",
+    "settings": [
+      {
+        "type": "header",
+        "content": "소셜 미디어 링크"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "페이스북",
+        "info": "https://facebook.com/yourpage"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "트위터",
+        "info": "https://twitter.com/yourhandle"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "인스타그램",
+        "info": "https://instagram.com/yourhandle"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "유튜브",
+        "info": "https://youtube.com/yourchannel"
+      }
+    ]
+  }
+]

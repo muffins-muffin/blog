@@ -1,0 +1,95 @@
+<div class="cart-template">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>장바구니</h1>
+      </div>
+    </div>
+    
+    {%- if cart.item_count > 0 -%}
+      <div class="row">
+        <div class="col-md-8">
+          <form action="/cart" method="post" novalidate>
+            <table class="table cart-table">
+              <thead>
+                <tr>
+                  <th>상품</th>
+                  <th>가격</th>
+                  <th>수량</th>
+                  <th>합계</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for item in cart.items -%}
+                  <tr class="cart-item">
+                    <td class="cart-item__image">
+                      {%- if item.image -%}
+                        <img src="{{ item.image | img_url: '100x' }}" alt="{{ item.title | escape }}">
+                      {%- endif -%}
+                      <a href="{{ item.url }}">{{ item.product.title }}</a>
+                      {%- unless item.variant.title == 'Default Title' -%}
+                        <br><small>{{ item.variant.title }}</small>
+                      {%- endunless -%}
+                    </td>
+                    <td>{{ item.price | money }}</td>
+                    <td>
+                      <input type="number" 
+                             name="updates[]" 
+                             value="{{ item.quantity }}" 
+                             min="0" 
+                             data-id="{{ item.key }}"
+                             class="form-control cart-quantity">
+                    </td>
+                    <td>{{ item.line_price | money }}</td>
+                    <td>
+                      <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash"></i>
+                      </a>
+                    </td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+            
+            <button type="submit" name="update" class="btn btn-default">장바구니 업데이트</button>
+          </form>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="cart-summary">
+            <h3>주문 요약</h3>
+            <table class="table">
+              <tr>
+                <td>소계:</td>
+                <td>{{ cart.total_price | money }}</td>
+              </tr>
+              <tr>
+                <td>배송비:</td>
+                <td>결제 시 계산</td>
+              </tr>
+              <tr class="cart-total">
+                <td><strong>총계:</strong></td>
+                <td><strong>{{ cart.total_price | money }}</strong></td>
+              </tr>
+            </table>
+            
+            <button type="submit" name="checkout" class="btn btn-primary btn-lg btn-block" 
+                    onclick="window.location.href='/checkout'">
+              결제하기
+            </button>
+            
+            <a href="/collections/all" class="btn btn-default btn-block">계속 쇼핑하기</a>
+          </div>
+        </div>
+      </div>
+    {%- else -%}
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>장바구니가 비어있습니다.</p>
+          <a href="/collections/all" class="btn btn-primary">쇼핑 계속하기</a>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

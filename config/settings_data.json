@@ -1,0 +1,26 @@
+{
+  "current": {
+    "company_name": "프리미엄 오토 모터스",
+    "address_line": "서울특별시 강남구 테헤란로 123",
+    "telephone_number": "02-1234-5678",
+    "fax_number": "02-1234-5679",
+    "company_email": "info@premiumauto.com",
+    "color_primary": "#000000",
+    "color_secondary": "#ffffff",
+    "color_accent": "#e74c3c",
+    "social_facebook_link": "",
+    "social_twitter_link": "",
+    "social_instagram_link": "",
+    "social_youtube_link": "",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    }
+  }
+}

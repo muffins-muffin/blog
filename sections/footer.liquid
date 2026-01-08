@@ -1,0 +1,94 @@
+<!-- FOOTER SECTION -->
+<footer> 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3><i class="fa fa-map-marker"></i> 연락처:</h3>
+        <p class="footer-contact">
+          {{ settings.company_name }} <br>
+          전화: {{ settings.telephone_number }} <br>
+          팩스: {{ settings.fax_number }} <br>
+          이메일: {{ settings.company_email }}<br>
+        </p>
+      </div>
+      
+      <div class="col-md-4">
+        <h3><i class="fa fa-external-link"></i> 링크</h3>
+        <p><a href="/pages/about">회사소개</a></p>
+        <p><a href="/collections/all">상품 보기</a></p>
+        <p><a href="/pages/contact">문의하기</a></p>
+        <p><a href="/blogs/news">블로그</a></p>
+        <p><a href="/pages/team">판매팀</a></p> 
+      </div>
+      
+      <div class="col-md-4">
+        <h3><i class="fa fa-clock-o"></i> 영업시간</h3>
+        {%- if section.settings.business_hours != blank -%}
+          {{ section.settings.business_hours }}
+        {%- else -%}
+          <p>평일: 오전 9시 - 오후 7시</p>
+          <p>토요일: 오전 10시 - 오후 5시</p>
+          <p>일요일: 휴무</p>
+          <p>점심시간: 오후 12시 - 1시</p>
+        {%- endif -%}
+      </div>
+      
+    </div>
+    
+    {%- if section.settings.show_social_icons -%}
+    <div class="row">
+      <div class="col-md-12 social-icons">
+        {%- if settings.social_facebook_link != blank -%}
+          <a href="{{ settings.social_facebook_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
+        {%- endif -%}
+        {%- if settings.social_twitter_link != blank -%}
+          <a href="{{ settings.social_twitter_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
+        {%- endif -%}
+        {%- if settings.social_instagram_link != blank -%}
+          <a href="{{ settings.social_instagram_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
+        {%- endif -%}
+        {%- if settings.social_youtube_link != blank -%}
+          <a href="{{ settings.social_youtube_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
+        {%- endif -%}
+      </div>
+    </div>
+    {%- endif -%}
+    
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p class="copyright">
+          &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+          {%- if section.settings.show_powered_by -%}
+            <br>Powered by <a href="https://www.shopify.com" target="_blank">Shopify</a>
+          {%- endif -%}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "business_hours",
+      "label": "영업시간",
+      "default": "<p>평일: 오전 9시 - 오후 7시</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "label": "소셜 미디어 아이콘 표시",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_powered_by",
+      "label": "Powered by Shopify 표시",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

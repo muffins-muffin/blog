@@ -1,0 +1,68 @@
+<div class="product-template">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Product Images -->
+        <div class="product-images">
+          {%- if product.featured_image -%}
+            <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title | escape }}" class="main-image">
+          {%- endif -%}
+          
+          {%- if product.images.size > 1 -%}
+            <div class="product-thumbnails">
+              {%- for image in product.images limit: 4 -%}
+                <img src="{{ image | img_url: '100x' }}" alt="{{ product.title | escape }}">
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <!-- Product Info -->
+        <div class="product-info">
+          <h1>{{ product.title }}</h1>
+          
+          <div class="product-price">
+            {%- if product.compare_at_price > product.price -%}
+              <span class="compare-price">{{ product.compare_at_price | money }}</span>
+            {%- endif -%}
+            <span class="price">{{ product.price | money }}</span>
+          </div>
+          
+          {%- if product.description != blank -%}
+            <div class="product-description">
+              {{ product.description }}
+            </div>
+          {%- endif -%}
+          
+          <!-- Product Form -->
+          {% form 'product', product %}
+            <select name="id" class="form-control">
+              {%- for variant in product.variants -%}
+                <option 
+                  value="{{ variant.id }}"
+                  {% unless variant.available %}disabled{% endunless %}>
+                  {{ variant.title }} - {{ variant.price | money }}
+                </option>
+              {%- endfor -%}
+            </select>
+            
+            <div class="quantity-selector">
+              <label for="quantity">수량:</label>
+              <input type="number" name="quantity" value="1" min="1" class="form-control">
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+              장바구니에 추가
+            </button>
+          {% endform %}
+          
+          {%- if product.vendor != blank -%}
+            <p class="product-vendor">판매자: {{ product.vendor }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
