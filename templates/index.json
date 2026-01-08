@@ -1,14 +1,23 @@
 {
   "sections": {
-    "hero-slider": {
-      "type": "hero-slider"
+    "sidebar": {
+      "type": "sidebar-navigation"
+    },
+    "hero": {
+      "type": "collection-hero"
     },
     "featured-products": {
-      "type": "featured-products"
+      "type": "featured-products",
+      "settings": {
+        "heading": "Featured Products",
+        "products_per_row": 4,
+        "products_to_show": 8
+      }
     }
   },
   "order": [
-    "hero-slider",
+    "sidebar",
+    "hero",
     "featured-products"
   ]
 }

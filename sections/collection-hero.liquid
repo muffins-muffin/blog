@@ -1,0 +1,71 @@
+<!-- COLLECTION HERO BANNER -->
+<section class="collection-hero">
+  <div class="hero-content-wrapper">
+    {%- if section.settings.image != blank -%}
+      <div class="hero-background" style="background-image: url('{{ section.settings.image | img_url: '1920x' }}');">
+    {%- else -%}
+      <div class="hero-background" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png') center/cover;">
+    {%- endif -%}
+      <div class="hero-text">
+        {%- if section.settings.subtitle != blank -%}
+          <h1 class="hero-title">{{ section.settings.subtitle }}</h1>
+        {%- else -%}
+          <h1 class="hero-title">New arrivals</h1>
+        {%- endif -%}
+        
+        {%- if section.settings.title != blank -%}
+          <h2 class="hero-subtitle">{{ section.settings.title }}</h2>
+        {%- else -%}
+          <h2 class="hero-subtitle">COLLECTION {{ 'now' | date: '%Y' }}</h2>
+        {%- endif -%}
+        
+        {%- if section.settings.button_link != blank -%}
+          <a href="{{ section.settings.button_link }}" class="hero-button">
+            {{ section.settings.button_text | default: 'SHOP NOW' }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "컬렉션 히어로 배너",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "배경 이미지"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "상단 제목",
+      "default": "New arrivals"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "메인 제목",
+      "default": "COLLECTION 2026"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "버튼 텍스트",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "버튼 링크"
+    }
+  ],
+  "presets": [
+    {
+      "name": "컬렉션 히어로 배너"
+    }
+  ]
+}
+{% endschema %}

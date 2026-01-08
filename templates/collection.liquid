@@ -1,50 +1,94 @@
-<div class="collection-template">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>{{ collection.title }}</h1>
-        {%- if collection.description != blank -%}
-          <div class="collection-description">
-            {{ collection.description }}
+<!-- COLLECTION TEMPLATE (Paginated) -->
+{%- paginate collection.products by 12 -%}
+
+<div class="collection-template-with-sidebar">
+  {% section 'sidebar-navigation' %}
+  
+  <div class="main-content">
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="top-nav-content">
+              <h1 class="category-title">{{ collection.title }}</h1>
+              <div class="top-nav-icons">
+                <a href="/cart" class="cart-icon">
+                  <i class="fa fa-shopping-cart"></i>
+                  <span class="cart-count">{{ cart.item_count }}</span>
+                </a>
+                <a href="/search" class="search-icon">
+                  <i class="fa fa-search"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collection Hero -->
+    {% section 'collection-hero' %}
+    
+    <!-- Products Grid -->
+    <div class="products-grid-section">
+      <div class="container-fluid">
+        <div class="products-count">
+          <p>{{ collection.products_count }} items</p>
+        </div>
+        
+        <div class="row">
+          {%- for product in collection.products -%}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+              <div class="product-grid-item">
+                {%- if product.available == false -%}
+                  <span class="product-badge sold-out">Sold Out</span>
+                {%- elsif product.compare_at_price > product.price -%}
+                  <span class="product-badge sale">Sale</span>
+                {%- elsif product.created_at > 'now' | date: '%s' | minus: 2592000 -%}
+                  <span class="product-badge new">New</span>
+                {%- endif -%}
+                
+                <a href="{{ product.url }}" class="product-image-link">
+                  {%- if product.featured_image -%}
+                    <img src="{{ product.featured_image | img_url: '400x' }}" 
+                         alt="{{ product.title | escape }}"
+                         class="product-image">
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg product-image' }}
+                  {%- endif -%}
+                </a>
+                
+                <div class="product-info">
+                  <h3 class="product-title">
+                    <a href="{{ product.url }}">{{ product.title }}</a>
+                  </h3>
+                  <div class="product-price">
+                    {%- if product.compare_at_price > product.price -%}
+                      <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                    {%- endif -%}
+                    <span class="price-regular">{{ product.price | money }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- else -%}
+            <div class="col-md-12">
+              <p class="no-products">이 컬렉션에는 상품이 없습니다.</p>
+            </div>
+          {%- endfor -%}
+        </div>
+        
+        {%- if paginate.pages > 1 -%}
+          <div class="row">
+            <div class="col-md-12">
+              {% render 'pagination', paginate: paginate %}
+            </div>
           </div>
         {%- endif -%}
       </div>
     </div>
-    
-    <div class="row">
-      {%- for product in collection.products -%}
-        <div class="col-md-3 col-sm-6">
-          <div class="product-card">
-            <a href="{{ product.url }}">
-              {%- if product.featured_image -%}
-                <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title | escape }}">
-              {%- else -%}
-                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-              {%- endif -%}
-            </a>
-            <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
-            <p class="product-price">
-              {%- if product.compare_at_price > product.price -%}
-                <span class="compare-price">{{ product.compare_at_price | money }}</span>
-              {%- endif -%}
-              <span class="price">{{ product.price | money }}</span>
-            </p>
-            <a href="{{ product.url }}" class="btn btn-primary">자세히 보기</a>
-          </div>
-        </div>
-      {%- else -%}
-        <div class="col-md-12">
-          <p>이 컬렉션에는 상품이 없습니다.</p>
-        </div>
-      {%- endfor -%}
-    </div>
-    
-    {%- if paginate.pages > 1 -%}
-      <div class="row">
-        <div class="col-md-12">
-          {% render 'pagination', paginate: paginate %}
-        </div>
-      </div>
-    {%- endif -%}
   </div>
 </div>
+
+{%- endpaginate -%}

@@ -1,0 +1,55 @@
+<!-- INDEX TEMPLATE WITH SIDEBAR -->
+<div class="index-template-with-sidebar">
+  {% section 'sidebar-navigation' %}
+  
+  <div class="main-content">
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="top-nav-content">
+              <h1 class="category-title">{{ shop.name }}</h1>
+              <div class="top-nav-icons">
+                <a href="/cart" class="cart-icon">
+                  <i class="fa fa-shopping-cart"></i>
+                  <span class="cart-count">{{ cart.item_count }}</span>
+                </a>
+                <a href="/search" class="search-icon">
+                  <i class="fa fa-search"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    {% section 'collection-hero' %}
+    
+    <!-- Featured Products -->
+    <div class="products-grid-section">
+      <div class="container-fluid">
+        {% section 'featured-products' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .index-template-with-sidebar {
+    display: flex;
+  }
+  
+  .index-template-with-sidebar .main-content {
+    margin-left: 220px;
+    flex: 1;
+  }
+  
+  @media (max-width: 992px) {
+    .index-template-with-sidebar .main-content {
+      margin-left: 0;
+    }
+  }
+</style>

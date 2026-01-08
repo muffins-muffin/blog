@@ -1,0 +1,73 @@
+<!-- SIDEBAR NAVIGATION -->
+<aside class="sidebar-navigation">
+  {%- if section.settings.logo != blank -%}
+    <div class="sidebar-logo">
+      <a href="/">
+        <img src="{{ section.settings.logo | img_url: '150x' }}" alt="{{ shop.name }}">
+      </a>
+    </div>
+  {%- else -%}
+    <div class="sidebar-logo">
+      <a href="/">
+        <h2>LOGO</h2>
+      </a>
+    </div>
+  {%- endif -%}
+
+  <nav class="sidebar-menu">
+    <ul>
+      {%- for link in linklists[section.settings.main_menu].links -%}
+        <li class="{% if link.active %}active{% endif %}">
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          
+          {%- if link.links != blank -%}
+            <ul class="submenu">
+              {%- for child_link in link.links -%}
+                <li class="{% if child_link.active %}active{% endif %}">
+                  <a href="{{ child_link.url }}">
+                    <i class="fa fa-caret-right"></i> {{ child_link.title }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+
+  {%- if section.settings.show_bottom_links -%}
+    <div class="sidebar-bottom">
+      <ul>
+        <li><a href="/pages/contact">Contact</a></li>
+        <li><a href="/blogs/news">Newsletter</a></li>
+        <li><a href="/account">Subscribe</a></li>
+      </ul>
+    </div>
+  {%- endif -%}
+</aside>
+
+{% schema %}
+{
+  "name": "사이드바 네비게이션",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "로고 이미지"
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "메인 메뉴",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_links",
+      "label": "하단 링크 표시",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

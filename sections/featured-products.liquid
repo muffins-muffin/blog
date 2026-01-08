@@ -1,52 +1,66 @@
 <!-- FEATURED PRODUCTS SECTION -->
 <section class="featured-products">
-  <div class="container">
-    {%- if section.settings.heading != blank -%}
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h2>{{ section.settings.heading }}</h2>
-          {%- if section.settings.subheading != blank -%}
-            <p class="lead">{{ section.settings.subheading }}</p>
-          {%- endif -%}
-        </div>
+  {%- if section.settings.heading != blank -%}
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.subheading != blank -%}
+          <p class="lead">{{ section.settings.subheading }}</p>
+        {%- endif -%}
       </div>
+    </div>
+  {%- endif -%}
+  
+  <div class="row">
+    {%- assign collection = collections[section.settings.collection] -%}
+    {%- if collection == empty -%}
+      {%- assign collection = collections.all -%}
     {%- endif -%}
     
-    <div class="row">
-      {%- assign collection = collections[section.settings.collection] -%}
-      {%- for product in collection.products limit: section.settings.products_to_show -%}
-        <div class="col-md-{{ 12 | divided_by: section.settings.products_per_row }}">
-          <div class="product-card">
-            <a href="{{ product.url }}">
-              {%- if product.featured_image -%}
-                <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title | escape }}">
-              {%- else -%}
-                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-              {%- endif -%}
-            </a>
-            <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
-            <p class="product-price">
+    {%- for product in collection.products limit: section.settings.products_to_show -%}
+      <div class="col-lg-{{ 12 | divided_by: section.settings.products_per_row }} col-md-4 col-sm-6 col-xs-12">
+        <div class="product-grid-item">
+          {%- if product.available == false -%}
+            <span class="product-badge sold-out">Sold Out</span>
+          {%- elsif product.compare_at_price > product.price -%}
+            <span class="product-badge sale">Sale</span>
+          {%- elsif product.created_at > 'now' | date: '%s' | minus: 2592000 -%}
+            <span class="product-badge new">New</span>
+          {%- endif -%}
+          
+          <a href="{{ product.url }}" class="product-image-link">
+            {%- if product.featured_image -%}
+              <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title | escape }}">
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
+          
+          <div class="product-info">
+            <h3 class="product-title">
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </h3>
+            <div class="product-price">
               {%- if product.compare_at_price > product.price -%}
-                <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                <span class="price-compare">{{ product.compare_at_price | money }}</span>
               {%- endif -%}
-              <span class="price">{{ product.price | money }}</span>
-            </p>
-            <a href="{{ product.url }}" class="btn btn-primary">자세히 보기</a>
+              <span class="price-regular">{{ product.price | money }}</span>
+            </div>
           </div>
         </div>
-      {%- endfor -%}
-    </div>
-    
-    {%- if section.settings.show_view_all -%}
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <a href="/collections/{{ section.settings.collection }}" class="btn btn-lg btn-default">
-            전체 상품 보기
-          </a>
-        </div>
       </div>
-    {%- endif -%}
+    {%- endfor -%}
   </div>
+  
+  {%- if section.settings.show_view_all -%}
+    <div class="row">
+      <div class="col-md-12 text-center" style="margin-top: 30px;">
+        <a href="/collections/{{ section.settings.collection }}" class="btn btn-lg btn-default">
+          전체 상품 보기
+        </a>
+      </div>
+    </div>
+  {%- endif -%}
 </section>
 
 {% schema %}

@@ -1,5 +1,5 @@
-<!-- HEADER SECTION -->
-<nav id="navbar-section" class="navbar navbar-default navbar-static-top navbar-sticky" role="navigation">
+<!-- HEADER SECTION - Hidden on collection pages with sidebar -->
+<nav id="navbar-section" class="navbar navbar-default navbar-static-top navbar-sticky main-header" role="navigation" style="display: none;">
   <div class="container">
   
     <div class="navbar-header">
@@ -49,6 +49,13 @@
     </div>
   </div>
 </nav>
+
+<style>
+  /* Show header only on non-collection pages */
+  body:not(.template-collection) .main-header {
+    display: block !important;
+  }
+</style>
 
 {% schema %}
 {
