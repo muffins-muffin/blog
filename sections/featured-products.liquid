@@ -118,8 +118,8 @@
 
 <style>
 .featured-products {
-  padding: 60px 0;
-  background-color: #f8f9fa;
+  padding: 0;
+  background-color: #fff;
 }
 
 .featured-products h2 {
@@ -137,17 +137,19 @@
 
 .product-grid-item {
   background: white;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: none;
+  border: 1px solid #e0e0e0;
   position: relative;
 }
 
 .product-grid-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-color: #ccc;
 }
 
 .product-badge {

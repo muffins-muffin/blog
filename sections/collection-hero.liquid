@@ -111,31 +111,33 @@
 }
 
 .hero-title {
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 300;
-  letter-spacing: 3px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-transform: none;
   animation: fadeIn 1s ease;
 }
 
 .hero-subtitle {
-  font-size: 72px;
+  font-size: 56px;
   font-weight: 700;
   margin-bottom: 30px;
+  letter-spacing: 3px;
   animation: fadeIn 1.5s ease;
 }
 
 .hero-button {
   display: inline-block;
-  padding: 15px 50px;
-  background: white;
-  color: #333;
+  padding: 12px 40px;
+  background: #000;
+  color: #fff;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   border-radius: 0;
+  font-size: 14px;
   transition: all 0.3s ease;
   animation: fadeIn 2s ease;
 }
@@ -143,7 +145,8 @@
 .hero-button:hover {
   background: #333;
   color: white;
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 @keyframes fadeIn {

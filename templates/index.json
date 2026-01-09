@@ -1,63 +1,31 @@
 {
   "sections": {
-    "header": {
-      "type": "header"
+    "sidebar": {
+      "type": "sidebar-navigation"
     },
-    "hero-slider": {
-      "type": "hero-slider",
-      "blocks": {
-        "slide-1": {
-          "type": "slide",
-          "settings": {
-            "heading": "신상품 입고",
-            "subheading": "2026 최신 컬렉션을 만나보세요",
-            "button_label": "쇼핑하기",
-            "button_link": "/collections/all",
-            "text_alignment": "center"
-          }
-        },
-        "slide-2": {
-          "type": "slide",
-          "settings": {
-            "heading": "특별 할인",
-            "subheading": "전 상품 최대 50% 할인",
-            "button_label": "세일 상품 보기",
-            "button_link": "/collections/sale",
-            "text_alignment": "center"
-          }
-        }
-      },
-      "block_order": ["slide-1", "slide-2"]
+    "collection-hero": {
+      "type": "collection-hero",
+      "settings": {
+        "subtitle": "New arrivals",
+        "title": "COLLECTION 2026",
+        "button_text": "SHOP NOW",
+        "button_link": "/collections/all"
+      }
     },
     "featured-products": {
       "type": "featured-products",
       "settings": {
-        "heading": "추천 상품",
-        "subheading": "엄선된 베스트 셀러 상품",
+        "heading": "",
+        "subheading": "",
         "products_per_row": 4,
         "products_to_show": 8,
-        "show_view_all": true
+        "show_view_all": false
       }
-    },
-    "new-arrivals": {
-      "type": "featured-products",
-      "settings": {
-        "heading": "신상품",
-        "subheading": "새롭게 입고된 상품을 확인하세요",
-        "products_per_row": 4,
-        "products_to_show": 4,
-        "show_view_all": true
-      }
-    },
-    "footer": {
-      "type": "footer"
     }
   },
   "order": [
-    "header",
-    "hero-slider",
-    "featured-products",
-    "new-arrivals",
-    "footer"
+    "sidebar",
+    "collection-hero",
+    "featured-products"
   ]
 }

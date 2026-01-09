@@ -1,53 +1,146 @@
 <!-- INDEX TEMPLATE WITH SIDEBAR -->
-<div class="index-template-with-sidebar">
-  {% section 'sidebar-navigation' %}
+<div class="shop-layout-wrapper">
+  <!-- Sidebar Navigation -->
+  <div class="shop-sidebar">
+    {% section 'sidebar-navigation' %}
+  </div>
   
-  <div class="main-content">
-    <!-- Top Navigation Bar -->
-    <div class="top-nav">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="top-nav-content">
-              <h1 class="category-title">{{ shop.name }}</h1>
-              <div class="top-nav-icons">
-                <a href="/cart" class="cart-icon">
-                  <i class="fa fa-shopping-cart"></i>
-                  <span class="cart-count">{{ cart.item_count }}</span>
-                </a>
-                <a href="/search" class="search-icon">
-                  <i class="fa fa-search"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+  <!-- Main Content Area -->
+  <div class="shop-main-content">
+    <!-- Top Bar with Cart -->
+    <div class="shop-top-bar">
+      <div class="shop-top-bar-inner">
+        <div class="shop-breadcrumb">
+          <a href="/">Home</a> / <span>Jeans</span>
+        </div>
+        <div class="shop-cart-icon">
+          <a href="/cart">
+            <i class="fa fa-shopping-cart"></i> Cart
+            <span class="cart-badge">{{ cart.item_count }}</span>
+          </a>
         </div>
       </div>
     </div>
-
-    <!-- Hero Section -->
-    {% section 'collection-hero' %}
     
-    <!-- Featured Products -->
-    <div class="products-grid-section">
-      <div class="container-fluid">
-        {% section 'featured-products' %}
-      </div>
+    <!-- Hero Banner -->
+    <div class="shop-hero-section">
+      {% section 'collection-hero' %}
+    </div>
+    
+    <!-- Products Grid -->
+    <div class="shop-products-section">
+      {% section 'featured-products' %}
     </div>
   </div>
 </div>
 
 <style>
-  .index-template-with-sidebar {
-    display: flex;
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
   }
   
-  .index-template-with-sidebar .main-content {
+  .shop-layout-wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .shop-sidebar {
+    width: 220px;
+    background: #f5f5f5;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .shop-main-content {
     margin-left: 220px;
     flex: 1;
+    background: #fff;
+  }
+  
+  .shop-top-bar {
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+  }
+  
+  .shop-top-bar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .shop-breadcrumb {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .shop-breadcrumb a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .shop-breadcrumb a:hover {
+    color: #000;
+  }
+  
+  .shop-cart-icon a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .cart-badge {
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 11px;
+    margin-left: 5px;
+  }
+  
+  .shop-hero-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+  
+  .shop-products-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 30px;
   }
   
   @media (max-width: 992px) {
+    .shop-sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .shop-sidebar.active {
+      transform: translateX(0);
+    }
+    
+    .shop-main-content {
+      margin-left: 0;
+    }
+  }
     .index-template-with-sidebar .main-content {
       margin-left: 0;
     }
